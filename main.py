@@ -177,7 +177,7 @@ async def slap(ctx, member : discord.Member):
 
 @client.command(aliases=["simpdetector"])
 async def simprate(ctx,member : discord.Member):
-  await ctx.send(f"{member.mention} is {random.randint(1,10)} out of 10 a simp")
+  await ctx.send(f"{member.mention} is {random.randint(1,100)}% a simp")
 
 @client.command()
 async def hackerman(ctx):
