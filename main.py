@@ -179,6 +179,13 @@ async def slap(ctx, member : discord.Member):
 async def simprate(ctx,member : discord.Member):
   await ctx.send(f"{member.mention} is {random.randint(1,10)} out of 10 a simp")
 
+@client.command()
+async def hackerman(ctx):
+  responses = ["i have severe braindamage", "crack is fun", "just kill me", "crack addiction isnt bad its great"]
+  embed=discord.Embed(color=0xf4c2c2)
+  embed.set_image(url="https://cdn.discordapp.com/attachments/684090883158573109/709999393239072898/ezgif.com-video-to-gif.gif")
+  embed.set_footer(text=f"{random.choice(responses)}")
+  await ctx.send(embed=embed)
 
 keep_alive()
 client.run("TOKEN")
