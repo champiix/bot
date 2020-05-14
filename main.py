@@ -187,5 +187,12 @@ async def hackerman(ctx):
   embed.set_footer(text=f"{random.choice(responses)}")
   await ctx.send(embed=embed)
 
+@client.command()
+async def alike(ctx):
+  embed=discord.Embed(color=0x800080)
+  embed.set_image(url="https://i.imgur.com/J0irbhm.png")
+  await ctx.send(embed=embed)
+
+
 keep_alive()
 client.run("TOKEN")
