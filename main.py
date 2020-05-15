@@ -193,6 +193,9 @@ async def alike(ctx):
   embed.set_image(url="https://i.imgur.com/J0irbhm.png")
   await ctx.send(embed=embed)
 
+@client.command(aliases=["gay"])
+async def gayrate(ctx,member : discord.Member):
+  await ctx.send(f"{member.mention} is {random.randint(1,100)}% gay")
 
 keep_alive()
 client.run("TOKEN")
