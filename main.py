@@ -192,6 +192,9 @@ async def alike(ctx):
   embed=discord.Embed(color=0x800080)
   embed.set_image(url="https://i.imgur.com/J0irbhm.png")
   await ctx.send(embed=embed)
+  embed=discord.Embed(color=0x800080)
+  embed.set_image(url="https://i.imgur.com/CnvQbWF.jpg")
+  await ctx.send(embed=embed)
 
 @client.command(aliases=["gay"])
 async def gayrate(ctx,member : discord.Member):
