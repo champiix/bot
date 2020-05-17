@@ -200,5 +200,11 @@ async def alike(ctx):
 async def gayrate(ctx,member : discord.Member):
   await ctx.send(f"{member.mention} is {random.randint(1,100)}% gay")
 
+@client.command(aliases=["overwatch"])
+async def ice(ctx):
+  embed=discord.Embed(color=0xd7fffe)
+  embed.set_image(url="https://media1.tenor.com/images/31e9558485e1c445420b81096d7c9f12/tenor.gif?itemid=7349756")
+  await ctx.send(embed=embed)
+
 keep_alive()
 client.run("TOKEN")
