@@ -50,26 +50,26 @@ async def clear(ctx, amount=0):
     await ctx.channel.purge(limit=amount + 1)
 
 @client.command()
-@commands.has_permissions(manage_messages=True)
+@commands.has_permissions(kick_members=True)
 async def kick(ctx, member : discord.Member, *, reason=None):
     await member.kick(reason=reason)
     await ctx.send(f"kicked {member} for {reason}")
 
 @client.command()
-@commands.has_permissions(manage_messages=True)
+@commands.has_permissions(ban_members=True)
 async def ban(ctx, member : discord.Member, *, reason=None):
     await member.ban(reason=reason)
     await ctx.send(f"banned {member} for {reason}")
 
 @client.command()
-@commands.has_permissions(manage_messages=True)
+@commands.has_permissions(kick_members=True)
 async def mute(ctx, member: discord.Member):
     role = discord.utils.get(ctx.guild.roles, name='Muted')
     await member.add_roles(role)
     await ctx.send(f"{member} muted")
 
 @client.command()
-@commands.has_permissions(manage_messages=True)
+@commands.has_permissions(kick_members=True)
 async def unmute(ctx, member: discord.Member):
     role = discord.utils.get(ctx.guild.roles, name='Muted')
     await member.remove_roles(role)
@@ -205,6 +205,31 @@ async def ice(ctx):
   embed=discord.Embed(color=0xd7fffe)
   embed.set_image(url="https://media1.tenor.com/images/31e9558485e1c445420b81096d7c9f12/tenor.gif?itemid=7349756")
   await ctx.send(embed=embed)
+
+@client.command()
+async def lolirate(ctx,member : discord.Member):
+  await ctx.send(f"{member.mention} is {random.randint(1,100)}% loli")
+
+@client.command(aliases=["chii"])
+async def champii(ctx):
+  embed=discord.Embed(color=0xf4c2c2)
+  embed.set_image(url="https://i.imgur.com/rZapsKT.jpg")
+  await ctx.send(embed=embed)
+  embed=discord.Embed(color=0xf4c2c2)
+  embed.set_image(url="https://i.imgur.com/IyFiOMK.jpg")
+  await ctx.send(embed=embed)
+
+@client.command()
+async def kill(ctx, member : discord.Member):
+  responses=["https://thumbs.gfycat.com/DapperDevotedLeonberger-size_restricted.gif",
+  "https://media.tenor.com/images/bef50761d75e855c95cb94139c8c292f/tenor.gif",
+  "https://media.tenor.com/images/6880dffc2f95f820d48633e1e3fc84f1/tenor.gif",
+  "https://media.tenor.com/images/cc188df8e2541acfe485e6fd802d3b0d/tenor.gif",
+  "https://media.tenor.com/images/a0c111e14b73a5ff9a876eb6beab6729/tenor.gif"]
+  embed=discord.Embed(color=0xf4c2c2)
+  embed.set_image(url=f"{random.choice(responses)}")
+  await ctx.send(f"{member.mention} got killed by "+ctx.message.author.mention, embed=embed)
+
 
 keep_alive()
 client.run("TOKEN")
