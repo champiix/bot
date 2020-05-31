@@ -230,6 +230,11 @@ async def kill(ctx, member : discord.Member):
   embed.set_image(url=f"{random.choice(responses)}")
   await ctx.send(f"{member.mention} got killed by "+ctx.message.author.mention, embed=embed)
 
+@client.command()
+async def scam(ctx):
+  embed=discord.Embed(title="Free Discord Nitro!", description="We here at discord want to give you a special gift in these times of need. Just click the link below for a **free** year of **Discord Nitro**! \n[𝗖𝗹𝗶𝗰𝗸 𝗺𝗲!](https://youtu.be/TsLHEDLhBGg)")
+  embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/684090883158573109/715668142918991892/4a54064.png")
+  await ctx.send(embed=embed)
 
 keep_alive()
 client.run("TOKEN")
