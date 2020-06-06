@@ -236,5 +236,61 @@ async def scam(ctx):
   embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/684090883158573109/715668142918991892/4a54064.png")
   await ctx.send(embed=embed)
 
+@client.command()
+async def copypasta(ctx):
+  responses = ["Being on the internet can be very scary. With nord VPN, it can shield you from those harmful sites and safe guard your nudes you send to people like Insan. Be sure to use CODE pravda at checkout for a discount on the 3 yr plan which is only as low as 3.99 per month!",
+  " I just don't understand what's wrong with like worshiping a girl. There's nothing wrong with that. Girls deserve to be worshiped. Not saying specifically me...but girls should be worshiped. Simping  isn't  bad. Simping is KING SHIT okay. You're a king if you're not afraid to simp.",
+   "okay dude, that’s it, you’ve been acting a little gay lately and I’m genuinely concerned about your motives. Listen man, I honestly don’t care if you’re gay but when you do this gay ass shit to me it makes me feel extremely uncomfortable bro. I’m gonna ask you to stop right now",
+   "What do you listen to dude? Rap? Bro, I'm only 12 and listen to kpop. You've probably never heard of it before, it's much too diverse for your liking. I'm not a fan of.. what's his name? Lilliam Pumpernickle? Yeaa, I can't stand that sort of music. Rap is always about big booty bitches and money and is far too mainstream. That's why I also listen to Jpop. It kinda lowkey and underground at the moment, but you should check out Twice, GFRIEND and IZ*one. Your rap can go take a hike while I listen to kpop and jpop with my friends. All of you think is that rap is superior and you wanna become a rapper. Well Kpop trainees take vigorous hours to be perfected meanwhile your stinky drug addict, alcoholic, horny rappers rap in some shitty bedroom that stinks of weed. Kpop idols have clean studios that are cleaned daily. Kpop music has a story meanwhile your stinky rap talks about bad stuff like drugs and alcohol. This is why kpop is superior and child friendly.",
+   "Shut yo ching chong wing wong chila bila ping pong bling blong ring rong dinga dinga ding dong qing qong wing wong walla walla wing wong ying yong ying yang yingy yingy ying yang jing jong xing xong jinga xinga jing xang sing song sing sang sannga sannga sing sang iing iang ingy ingy iing iang ging gang ging ging ginga ginga ging gang hing haung hing hau hauie mauie hau hau ning nang ning nang ninga ningo ning ning zing zing zong zong zinga zingo zong zing ass the fuck up",
+   "I don't think you guys realize how cool I am. Unlike you peasants, I have Discord **NITRO!** Thats right, full nitro. What do you fucking idiots have? Classic? Get outta here. No Nitro? Fucking loser lol. None of you will **EVER** be on my level cause I have Nitro and you don't. Do you get animated profile pictures? Thats what I thought. Do you get ***TWO FREE SERVER BOOSTS?*** Thats what I thought. You also don't get to change your discrim! Thats right, the four numbers at the end of your username that you haven't payed ANY attention to. How does that make you feel, non-nitro?"]
+  embed=discord.Embed(title="funny pasta", description=f"{random.choice(responses)}")
+  await ctx.send(embed=embed)
+
+@client.command(aliases=["hornyrate"])
+async def horny(ctx,member : discord.Member):
+  await ctx.send(f"{member.mention} is {random.randint(1,100)}% horny")
+
+@client.command()
+@commands.has_permissions(kick_members=True)
+async def pmute(ctx, member: discord.Member):
+    role = discord.utils.get(ctx.guild.roles, name='Parasites')
+    await member.add_roles(role)
+    await ctx.send(f"{member.mention} was sent to the gulag.")
+
+@client.command()
+@commands.has_permissions(kick_members=True)
+async def punmute(ctx, member: discord.Member):
+    role = discord.utils.get(ctx.guild.roles, name='Parasites')
+    await member.remove_roles(role)
+    await ctx.send(f'{member.mention} was freed from the gulag by Western forces.')
+
+@client.command()
+async def kiss(ctx, member: discord.Member):
+  responses = ["https://media1.tenor.com/images/4b5d5afd747fe053ed79317628aac106/tenor.gif?itemid=5649376",
+  "https://media1.tenor.com/images/ea9a07318bd8400fbfbd658e9f5ecd5d/tenor.gif?itemid=12612515",
+  "https://media1.tenor.com/images/7fd98defeb5fd901afe6ace0dffce96e/tenor.gif?itemid=9670722",
+  "https://media1.tenor.com/images/3d56f6ef81e5c01241ff17c364b72529/tenor.gif?itemid=13843260",
+  "https://media1.tenor.com/images/0ec5382910e34ca5649f6c328124daa1/tenor.gif?itemid=15556555",
+  "https://media1.tenor.com/images/632a3db90c6ecd87f1242605f92120c7/tenor.gif?itemid=5608449"]
+  embed=discord.Embed(color=0xf4c2c2)
+  embed.set_image(url=f"{random.choice(responses)}")
+  await ctx.send(f"{member.mention} got kissed by "+ctx.message.author.mention, embed=embed)
+
+@client.command()
+async def hug(ctx, member : discord.Member):
+  responses = ["https://media1.tenor.com/images/e58eb2794ff1a12315665c28d5bc3f5e/tenor.gif?itemid=10195705",
+  "https://media1.tenor.com/images/2d4138c7c24d21b9d17f66a54ee7ea03/tenor.gif?itemid=12535134",
+  "https://media1.tenor.com/images/f20151a1f7e003426ca7f406b6f76c82/tenor.gif?itemid=13985247",
+  "https://media1.tenor.com/images/969f0f462e4b7350da543f0231ba94cb/tenor.gif?itemid=14246498",
+  "https://media1.tenor.com/images/4d89d7f963b41a416ec8a55230dab31b/tenor.gif?itemid=5166500",
+  "https://media1.tenor.com/images/b77fd0cfd95f89f967be0a5ebb3b6c6a/tenor.gif?itemid=7864716",
+  "https://media1.tenor.com/images/34a1d8c67e7b373de17bbfa5b8d35fc0/tenor.gif?itemid=8995974",
+  "https://media1.tenor.com/images/8055f0ab4e377e35f5884dfe3e3fec52/tenor.gif?itemid=5210972",
+  "https://media1.tenor.com/images/edea458dd2cbc76b17b7973a0c23685c/tenor.gif?itemid=13041472"]
+  embed=discord.Embed(color=0xf4c2c2)
+  embed.set_image(url=f"{random.choice(responses)}")
+  await ctx.send(f"{member.mention} got a hug from "+ctx.message.author.mention, embed=embed)
+
 keep_alive()
 client.run("TOKEN")
