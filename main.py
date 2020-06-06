@@ -6,6 +6,7 @@ from webserver import keep_alive
 import os
 
 client = commands.Bot(command_prefix = ".")
+client.remove_command('help')
 
 @client.event
 async def on_ready():
@@ -291,6 +292,12 @@ async def hug(ctx, member : discord.Member):
   embed=discord.Embed(color=0xf4c2c2)
   embed.set_image(url=f"{random.choice(responses)}")
   await ctx.send(f"{member.mention} got a hug from "+ctx.message.author.mention, embed=embed)
+
+@client.command()
+async def help(ctx):
+ embed=discord.Embed(title="Bot's code: https://github.com/champiix/bot", description="Fun\n``8ball``, ``coinflip|cf``, ``copypasta``, ``dice|roll``, ``horny|hornyrate``, ``gay|gayrate``, ``hug``, ``hackerman``, ``kill``,  ``kiss``,  ``lolirate``,  ``simp|simprate``,  ``slap``\nModeration\n ``ban``,  ``mute``,  ``clear``,  ``kick``,  ``unmute``\nCustom Commands\n ``alike``,  ``braindamage``,  ``champii``,  ``culprits``,  ``eesti``,  ``ice``,  ``logo``,  ``manifesto``,  ``mochi``,  ``nekumi|miku``,  ``pravda``,  ``t``\n VPN \n``pia``,  ``nordvpn``,  ``tunnelbear``\nBot Stuff\n``repo``,  ``ping``,  ``info``,  ``help (shows this message)``", color=0xbdf7ff)
+ embed.set_author(name="Command list",icon_url="https://cdn.discordapp.com/avatars/692360784268754964/fd53199330ab035b7ccd0c1828386d72.png?size=2048&width=474&height=474")
+ await ctx.send(embed=embed)
 
 keep_alive()
 client.run("TOKEN")
