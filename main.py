@@ -162,16 +162,15 @@ async def pia(ctx):
 
 @client.command()
 async def slap(ctx, member : discord.Member):
-  responses=["https://media.tenor.com/images/bd092fb261df4588a51f9dd1f4815fea/tenor.gif",
-  "https://media.tenor.com/images/ac09dd389d43f3bc0adad6432a942532/tenor.gif",
-  "https://media.tenor.com/images/6dbd997e3e79f21b7841b244833325c0/tenor.gif",
-  "https://media.tenor.com/images/604a56f1e6e594beb00c265ea7a40dca/tenor.gif",
-  "https://media.tenor.com/images/56387025912c48b5af27c0711a2645b8/tenor.gif",
-  "https://media.tenor.com/images/f8f050aa79f92f3e45669ef8db45ed1e/tenor.gif",
-  "https://media.tenor.com/images/79c666d38d5494bad25c5c023c0bbc44/tenor.gif",
-  "https://media.tenor.com/images/47698b115e4185036e95111f81baab45/tenor.gif",
-  "https://media.tenor.com/images/53b846f3cc11c7c5fe358fc6d458901d/tenor.gif",
-  "https://media.tenor.com/images/091e0502e5fda1201ee76f5f26eea195/tenor.gif"]
+  responses=["https://media1.tenor.com/images/9ea4fb41d066737c0e3f2d626c13f230/tenor.gif?itemid=7355956",
+"https://media1.tenor.com/images/3fd96f4dcba48de453f2ab3acd657b53/tenor.gif?itemid=14358509",
+"https://media1.tenor.com/images/74db8b0b64e8d539aebebfbb2094ae84/tenor.gif?itemid=15144612",
+"https://media1.tenor.com/images/4a6b15b8d111255c77da57c735c79b44/tenor.gif?itemid=10937039",
+"https://media1.tenor.com/images/dcd359a74e32bca7197de46a58ec7b72/tenor.gif?itemid=12396060",
+"https://media1.tenor.com/images/d14969a21a96ec46f61770c50fccf24f/tenor.gif?itemid=5509136",
+"https://media1.tenor.com/images/477821d58203a6786abea01d8cf1030e/tenor.gif?itemid=7958720",
+"https://media1.tenor.com/images/b6d8a83eb652a30b95e87cf96a21e007/tenor.gif?itemid=10426943",
+"https://media1.tenor.com/images/89309d227081132425e5931fbbd7f59b/tenor.gif?itemid=4880762"]
   embed=discord.Embed(color=0xf4c2c2)
   embed.set_image(url=f"{random.choice(responses)}")
   await ctx.send(f"{member.mention} got slapped by "+ctx.message.author.mention, embed=embed)
@@ -295,9 +294,16 @@ async def hug(ctx, member : discord.Member):
 
 @client.command()
 async def help(ctx):
- embed=discord.Embed(title="Bot's code: https://github.com/champiix/bot", description="Fun\n``8ball``, ``coinflip|cf``, ``copypasta``, ``dice|roll``, ``horny|hornyrate``, ``gay|gayrate``, ``hug``, ``hackerman``, ``kill``,  ``kiss``,  ``lolirate``,  ``simp|simprate``,  ``slap``\nModeration\n ``ban``,  ``mute``,  ``clear``,  ``kick``,  ``unmute``\nCustom Commands\n ``alike``,  ``braindamage``,  ``champii``,  ``culprits``,  ``eesti``,  ``ice``,  ``logo``,  ``manifesto``,  ``mochi``,  ``nekumi|miku``,  ``pravda``,  ``t``\n VPN \n``pia``,  ``nordvpn``,  ``tunnelbear``\nBot Stuff\n``repo``,  ``ping``,  ``info``,  ``help (shows this message)``", color=0xbdf7ff)
+ embed=discord.Embed(title="Bot's code: https://github.com/champiix/bot", description="Fun\n``8ball``, ``coinflip|cf``, ``copypasta``, ``dice|roll``, ``horny|hornyrate``, ``gay|gayrate``, ``hug``, ``hackerman``, ``kill``,  ``kiss``,  ``lolirate``,  ``simp|simprate``,  ``slap``, ``pat``\nModeration\n ``ban``,  ``mute``,  ``clear``,  ``kick``,  ``unmute``\nCustom Commands\n ``alike``,  ``braindamage``,  ``champii``,  ``culprits``,  ``eesti``,  ``ice``,  ``logo``,  ``manifesto``,  ``mochi``,  ``nekumi|miku``,  ``pravda``,  ``t``\n VPN \n``pia``,  ``nordvpn``,  ``tunnelbear``\nBot Stuff\n``repo``,  ``ping``,  ``info``,  ``help (shows this message)``", color=0xbdf7ff)
  embed.set_author(name="Command list",icon_url="https://cdn.discordapp.com/avatars/692360784268754964/fd53199330ab035b7ccd0c1828386d72.png?size=2048&width=474&height=474")
  await ctx.send(embed=embed)
+
+@client.command()
+async def pat(ctx, member : discord.Member):
+  pats = ["https://media1.tenor.com/images/da8f0e8dd1a7f7db5298bda9cc648a9a/tenor.gif?itemid=12018819", "https://media1.tenor.com/images/266e5f9bcb3f3aa87ba39526ee202476/tenor.gif?itemid=5518317", "https://media1.tenor.com/images/d3c117054fb924d66c75169ff158c811/tenor.gif?itemid=15471762", "https://media1.tenor.com/images/116fe7ede5b7976920fac3bf8067d42b/tenor.gif?itemid=9200932", "https://media1.tenor.com/images/01a97fee428982b325269207ca22866b/tenor.gif?itemid=16085328", "https://media1.tenor.com/images/291ea37382e1d6cd33349c50a398b6b9/tenor.gif?itemid=10204936", "https://media1.tenor.com/images/5466adf348239fba04c838639525c28a/tenor.gif?itemid=13284057", "https://media1.tenor.com/images/61187dd8c7985c443bf9cd39bc310c02/tenor.gif?itemid=12018805", "https://media1.tenor.com/images/143a887b46092bd880997119ecf09681/tenor.gif?itemid=15177421"]
+  embed=discord.Embed(color=0xf4c2c2)
+  embed.set_image(url=f"{random.choice(pats)}")
+  await ctx.send(f"{member.mention} got a headpat from "+ctx.message.author.mention, embed=embed)
 
 keep_alive()
 client.run("TOKEN")
