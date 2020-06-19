@@ -305,5 +305,14 @@ async def pat(ctx, member : discord.Member):
   embed.set_image(url=f"{random.choice(pats)}")
   await ctx.send(f"{member.mention} got a headpat from "+ctx.message.author.mention, embed=embed)
 
+@client.command(aliases=["pedo"])
+async def pedorate(ctx,member : discord.Member):
+  await ctx.send(f"{member.mention} is {random.randint(1,100)}% a pedo")
+
+@client.command()
+async def anthem(ctx):
+  anthems = ["Расцветали яблони и груши, Поплыли туманы над рекой; Выходила на берег Катюша, На высокий берег, на крутой. Выходила, песню заводила Про степного, сизого орла, Про того, которого любила, Про того, чьи письма берегла. Ой, ты песня, песенка девичья, Ты лети за ясным солнцем вслед, И бойцу на дальнем пограничье От Катюши передай привет. Пусть он вспомнит девушку простую, Пусть услышить, как она поет, Пусть он землю бережет родную, А любовь Катюша сбережет. Расщветали яблони и груши, Поплыли туманы над рекой; Выходила на берег Катюша, На высокий берег, на крутой", "Apples and pears were blossoming Mist on the river floating On the bank Katyusha stepped out On the high steep bank Stepped out, started a song About one grey steppe eagle About her loved one Whose letters she cherished Oh song, maiden's song Fly towards the clear sun And to the warrior on a far away border Bring Katyusha's greeting May he remember this simple maiden And hear her singing May he save our motherland And love, Katyusha will save."]
+  embed=discord.Embed(title="the national anthem", description=f"{random.choice(anthems)}", color=0xda0a0a)
+  await ctx.send(embed=embed)
 keep_alive()
 client.run("TOKEN")
