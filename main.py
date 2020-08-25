@@ -315,4 +315,4 @@ async def anthem(ctx):
   embed=discord.Embed(title="the national anthem", description=f"{random.choice(anthems)}", color=0xda0a0a)
   await ctx.send(embed=embed)
 keep_alive()
-client.run("NzQ3ODY2NzA1MjgzNTE0Mzk4.X0VHJQ.l_i8SkN3o7DYYl_5fQ1fTZtlAeM")
+client.run("token")
