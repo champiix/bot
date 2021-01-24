@@ -10,7 +10,7 @@ client.remove_command('help')
 
 @client.event
 async def on_ready():
-    await client.change_presence(activity=discord.Streaming(name="uwu hewwo", url="https://www.twitch.tv/champii"))
+    await client.change_presence(activity=discord.Streaming(name="ayaya", url="https://www.twitch.tv/champii"))
     print("bot is ready")
 
 @client.event
@@ -21,10 +21,17 @@ async def on_member_join(member):
 async def on_member_remove(member):
     print(f'{member} has left a server.')
 
-@client.command()
-async def ping(ctx):
-    await ctx.send(f'pong! {round(client.latency * 1000)}ms')
+@client.event
+async def on_command_error(ctx,error):
+  if isinstance(error, commands.CommandNotFound):
+    await ctx.send("That command doesn't exist!")
+  if isinstance(error, commands.MissingRequiredArgument):
+    await ctx.send("You forgot to mention a user!")
 
+@client.command(aliases=["p"])
+async def ping(ctx):
+    await ctx.send(f'finding your local egirl took **{round(client.latency * 1000)}ms**')
+ 
 @client.command(aliases=["8ball"])
 async def _8ball(ctx):
     responses = ["yes",
@@ -32,12 +39,12 @@ async def _8ball(ctx):
                  "my sources say no",
                  "my sources say yes",
                  "no",
-                 "bitch tf you crazy?"]
+                 "idk but stan twice"]
     await ctx.send( f" {random.choice(responses)}, "+ctx.message.author.mention)
 
 @client.command(aliases=["roll"])
 async def dice(ctx):
-    await ctx.send(f"{random.raninit(1,6)})")
+    await ctx.send(f"{random.randint(1,6)}")
 
 @client.command(aliases=["cf"])
 async def coinflip(ctx):
@@ -48,34 +55,33 @@ async def coinflip(ctx):
 @client.command()
 @commands.has_permissions(manage_messages=True)
 async def clear(ctx, amount=0):
-    await ctx.channel.purge(limit=amount + 1)
+    await ctx.channel.purge(limit=amount +1)
 
 @client.command()
 @commands.has_permissions(kick_members=True)
 async def kick(ctx, member : discord.Member, *, reason=None):
     await member.kick(reason=reason)
-    await ctx.send(f"kicked {member} for {reason}")
+    await ctx.send(f"kicked {member.mention} for {reason}")
 
 @client.command()
 @commands.has_permissions(ban_members=True)
 async def ban(ctx, member : discord.Member, *, reason=None):
     await member.ban(reason=reason)
-    await ctx.send(f"banned {member} for {reason}")
+    await ctx.send(f"banned {member.mention} for {reason}")
 
 @client.command()
 @commands.has_permissions(kick_members=True)
-async def mute(ctx, member: discord.Member):
+async def mute(ctx, member: discord.Member, reason=None):
     role = discord.utils.get(ctx.guild.roles, name='Muted')
-    await member.add_roles(role)
-    await ctx.send(f"{member} muted")
+    await member.add_roles(role, reason=reason)
+    await ctx.send(f"{member.mention} muted for {reason}")
 
 @client.command()
 @commands.has_permissions(kick_members=True)
 async def unmute(ctx, member: discord.Member):
     role = discord.utils.get(ctx.guild.roles, name='Muted')
     await member.remove_roles(role)
-    await ctx.send(f'{member} unmuted')
-
+    await ctx.send(f'{member.mention} unmuted')
 
 @client.command()
 async def pravda(ctx):
@@ -83,7 +89,12 @@ async def pravda(ctx):
 
 @client.command()
 async def culprits(ctx):
-    await ctx.send("AKM > AK103")
+  embed=discord.Embed(colour=0x1BFF00)
+  embed.set_image(url="https://i.imgur.com/5qAZzdj.png")
+  await ctx.send("AKM > AK103", embed=embed)
+  embed=discord.Embed(colour=0x1BFF00)
+  embed.set_image(url="https://i.imgur.com/shEOdYn.png")
+  await ctx.send(embed=embed)
 
 @client.command(pass_context=True, aliases=["propaganda"])
 async def manifesto(ctx):
@@ -99,7 +110,7 @@ async def manifesto(ctx):
 
 @client.command()
 async def info(ctx):
-    embed = discord.Embed(title="red velvet", description="communist bot with a kpop pfp", color=0xf4c2c2)
+    embed = discord.Embed(title="peach", description="communist bot with a kpop pfp", color=0xf4c2c2)
 
     # give info about you here
     embed.add_field(name="Author", value="champii~")
@@ -115,7 +126,7 @@ async def info(ctx):
 @client.command()
 async def logo(ctx):
     embed = discord.Embed(colour=discord.Colour.red())
-    embed.set_image(url="https://cdn.discordapp.com/attachments/684090883158573109/697947452099002378/1586474027404.gif")
+    embed.set_image(url="https://i.imgur.com/FhaJzaH.gif")
     await ctx.send(embed=embed)
 
 @client.command()
@@ -123,6 +134,7 @@ async def eesti(ctx):
   embed = discord.Embed(colour=discord.Colour.blue())
   embed.set_image(url="https://media.tenor.com/images/2cac9910ace64c5a882dc6f6e5a7fed5/tenor.gif")
   await ctx.send(embed=embed)
+
 
 @client.command(aliases=["coughon"])
 @commands.has_role('infected')
@@ -137,7 +149,7 @@ async def repo(ctx):
   embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/590944283675328541/702653440966524988/JPEG_20190814_011853.jpg")
   await ctx.send(embed=embed)
 
-@client.command()
+@client.command(aliases=["cure"])
 @commands.has_role("doctor")
 async def heal(ctx, member: discord.Member):
   role = discord.utils.get(ctx.guild.roles, name='infected')
@@ -158,7 +170,7 @@ async def tunnelbear(ctx):
 
 @client.command()
 async def pia(ctx):
-  await ctx.send("Looking for an affordable and reliable VPN? Private Internet Access encrypts your internet traffic and uses a safe protected IP. It also works on both your computer and smartphone. Check it out today at privateinternetaccess.com/
+  await ctx.send("Looking for an affordable and reliable VPN? Private Internet Access encrypts your internet traffic and uses a safe protected IP. It also works on both your computer and smartphone. Check it out today at privateinternetaccess.com/pravda")
 
 @client.command()
 async def slap(ctx, member : discord.Member):
@@ -174,10 +186,22 @@ async def slap(ctx, member : discord.Member):
   embed=discord.Embed(color=0xf4c2c2)
   embed.set_image(url=f"{random.choice(responses)}")
   await ctx.send(f"{member.mention} got slapped by "+ctx.message.author.mention, embed=embed)
-
-@client.command(aliases=["simpdetector"])
+  
+@client.command(aliases=["simpdetector", "simp"])
 async def simprate(ctx,member : discord.Member):
-  await ctx.send(f"{member.mention} is {random.randint(1,100)}% a simp")
+  await ctx.send(f"{member.mention} is {random.randint(1,100)}% a simp.")
+
+@client.command(aliases=["neku", "miku"])
+async def nekumi(ctx):
+  embed=discord.Embed(color=0xff1d8e)
+  embed.set_image(url="https://i.imgur.com/aYJ8x3E.png")
+  await ctx.send(embed=embed)
+
+@client.command()
+async def braindamage(ctx):
+  embed=discord.Embed(color=0xf4c2c2)
+  embed.set_image(url="https://i.imgur.com/9RGxJ2c.png")
+  await ctx.send(embed=embed)
 
 @client.command()
 async def hackerman(ctx):
@@ -190,10 +214,25 @@ async def hackerman(ctx):
 @client.command()
 async def alike(ctx):
   embed=discord.Embed(color=0x800080)
-  embed.set_image(url="https://i.imgur.com/J0irbhm.png")
+  embed.set_image(url="https://i.imgur.com/ILczO3H.png")
   await ctx.send(embed=embed)
   embed=discord.Embed(color=0x800080)
   embed.set_image(url="https://i.imgur.com/CnvQbWF.jpg")
+  await ctx.send(embed=embed)
+  embed=discord.Embed(color=0x800080)
+  embed.set_image(url="https://cdn.discordapp.com/attachments/617112983901962260/716897276617949334/unknown.png")
+  await ctx.send(embed=embed)
+  embed=discord.Embed(color=0x800080)
+  embed.set_image(url="https://i.imgur.com/9YNxywz.png")
+  await ctx.send(embed=embed)
+
+@client.command()
+async def mochi(ctx):
+  embed=discord.Embed(color=0xf4c2c2)
+  embed.set_image(url="https://i.imgur.com/ze6Wn0w.jpg")
+  await ctx.send(embed=embed)
+  embed=discord.Embed(color=0xf4c2c2)
+  embed.set_image(url="https://i.imgur.com/mEESSOZ.png")
   await ctx.send(embed=embed)
 
 @client.command(aliases=["gay"])
@@ -206,7 +245,7 @@ async def ice(ctx):
   embed.set_image(url="https://media1.tenor.com/images/31e9558485e1c445420b81096d7c9f12/tenor.gif?itemid=7349756")
   await ctx.send(embed=embed)
 
-@client.command()
+@client.command(aliases=["loli"])
 async def lolirate(ctx,member : discord.Member):
   await ctx.send(f"{member.mention} is {random.randint(1,100)}% loli")
 
@@ -294,8 +333,8 @@ async def hug(ctx, member : discord.Member):
 
 @client.command()
 async def help(ctx):
- embed=discord.Embed(title="Bot's code: https://github.com/champiix/bot", description="Fun\n``8ball``, ``coinflip|cf``, ``copypasta``, ``dice|roll``, ``horny|hornyrate``, ``gay|gayrate``, ``hug``, ``hackerman``, ``kill``,  ``kiss``,  ``lolirate``,  ``simp|simprate``,  ``slap``, ``pat``\nModeration\n ``ban``,  ``mute``,  ``clear``,  ``kick``,  ``unmute``\nCustom Commands\n ``alike``,  ``braindamage``,  ``champii``,  ``culprits``,  ``eesti``,  ``ice``,  ``logo``,  ``manifesto``,  ``mochi``,  ``nekumi|miku``,  ``pravda``,  ``t``\n VPN \n``pia``,  ``nordvpn``,  ``tunnelbear``\nBot Stuff\n``repo``,  ``ping``,  ``info``,  ``help (shows this message)``", color=0xbdf7ff)
- embed.set_author(name="Command list",icon_url="https://cdn.discordapp.com/avatars/692360784268754964/fd53199330ab035b7ccd0c1828386d72.png?size=2048&width=474&height=474")
+ embed=discord.Embed(title="Bot's code: https://github.com/champiix/bot", description="IMPORTANT\n``petition``\nFun\n``8ball``, ``coinflip|cf``, ``copypasta``, ``dice|roll``, ``horny|hornyrate``, ``gay|gayrate``, ``hug``, ``hackerman``, ``kill``,  ``kiss``,  ``lolirate``,  ``simp|simprate``,  ``slap``,``pat``, ``pedo|pedorate``,``sus``,``avatar``,``server``\nModeration\n ``ban``,  ``mute``,  ``clear``,  ``kick``,  ``unmute``\nCustom Commands\n``alike``,  ``braindamage``,  ``champii``,  ``culprits``,  ``eesti``,  ``ice``,  ``logo``,  ``manifesto``,  ``mochi``,  ``nekumi|miku``,  ``pravda``,  ``t``, ``snowy``,``zen``,``reece``,``xeno``,``unimech``\nVPN \n``pia``,  ``nordvpn``,  ``tunnelbear``\nBot Stuff\n``repo``,  ``ping``,  ``info``,  ``help (shows this message)``", color=0xF2AD7E)
+ embed.set_author(name="Command list",icon_url="https://cdn.discordapp.com/avatars/692360784268754964/e82b5189c1c9c5f57be95482db6ba1fb.png?size=512")
  await ctx.send(embed=embed)
 
 @client.command()
@@ -314,5 +353,131 @@ async def anthem(ctx):
   anthems = ["Расцветали яблони и груши, Поплыли туманы над рекой; Выходила на берег Катюша, На высокий берег, на крутой. Выходила, песню заводила Про степного, сизого орла, Про того, которого любила, Про того, чьи письма берегла. Ой, ты песня, песенка девичья, Ты лети за ясным солнцем вслед, И бойцу на дальнем пограничье От Катюши передай привет. Пусть он вспомнит девушку простую, Пусть услышить, как она поет, Пусть он землю бережет родную, А любовь Катюша сбережет. Расщветали яблони и груши, Поплыли туманы над рекой; Выходила на берег Катюша, На высокий берег, на крутой", "Apples and pears were blossoming Mist on the river floating On the bank Katyusha stepped out On the high steep bank Stepped out, started a song About one grey steppe eagle About her loved one Whose letters she cherished Oh song, maiden's song Fly towards the clear sun And to the warrior on a far away border Bring Katyusha's greeting May he remember this simple maiden And hear her singing May he save our motherland And love, Katyusha will save."]
   embed=discord.Embed(title="the national anthem", description=f"{random.choice(anthems)}", color=0xda0a0a)
   await ctx.send(embed=embed)
+
+@client.command(aliases=["8bal", "9ball"])
+async def _9ball(ctx):
+  h = ["its 8ball you donut", "learn to spell its 8ball", "are you retarded, its 8ball"]
+  await ctx.send(f"{random.choice(h)}")
+
+@client.command()
+async def ship(ctx, member : discord.Member):
+  await ctx.send(f"{member.mention} loves {ctx.message.author.mention} {random.randint(1,100)}%")
+
+@client.command()
+async def snowy(ctx):
+  embed=discord.Embed(colour=0x3498DB)
+  embed.set_image(url="https://cdn.discordapp.com/attachments/684090883158573109/736150065852317746/unknown.png")
+  await ctx.send(embed=embed)
+
+@client.command()
+async def zen(ctx):
+  embed=discord.Embed()
+  embed.set_image(url="https://i.imgur.com/jzjlhz4.png")
+  await ctx.send(embed=embed)
+  embed=discord.Embed()
+  embed.set_image(url="https://i.imgur.com/RUOWQcY.png")
+  await ctx.send(embed=embed)
+  embed=discord.Embed()
+  embed.set_image(url="https://i.imgur.com/Jefvl1j.png")
+  await ctx.send(embed=embed)
+  embed=discord.Embed()
+  embed.set_image(url="https://i.imgur.com/pLZxxtY.png")
+  await ctx.send(embed=embed)
+  embed=discord.Embed()
+  embed.set_image(url="https://i.imgur.com/p1OeCRY.png")
+  await ctx.send(embed=embed)
+
+@client.command()
+async def reece(ctx):
+  embed=discord.Embed()
+  embed.set_image(url="https://i.imgur.com/aJ2sccg.png")
+  await ctx.send(embed=embed)
+  
+@client.command()
+async def petition(ctx):
+  await ctx.send("https://www.change.org/removeMarfromStylis")
+
+@client.command()
+@commands.has_permissions(ban_members=True)
+async def prules(ctx):
+  embed=discord.Embed(color=0xda0a0a)
+  embed.add_field(name="To promote a healthy and organized server, we do require that all of our members abide by the rules. If caught breaking the rules, you can be; a muted from text chats and voice calls, kicked,permanently banned, or in more severe cases, reported to Discord.", value="\n**Rule #1: Respect the community and its members**\nThere is no reason to be outright rude or disrespectful to anyone in this server. Please act civilly and use good judgement.\n\n**Rule #2: No harmful acts to the server or its members**\nHarassment, discriminating other members, and/or threatening the well-being and privacy of other members is strictly prohibited. We want this server to be a clean, friendly environment for all. Phishing, scamming, bullying, spamming, and raiding are also not permitted.\n\n**Rule #3: No NSFW Content**\nAll NSFW content (nudity, intense sexuality, excessive profanity, violence, gore, and any disturbing subject matter) is strictly prohibited on all grounds.\n\n**Rule #4: Use the Discord and its channels accordingly**\nBe sure to utilize each channel for its intended purpose. Don't post anything where it shouldn't be.")
+  await ctx.send(embed=embed)
+  embed=discord.Embed(color=0xda0a0a)
+  embed.add_field(name="Rule #5: No abusing permissions", value="Whether a team member or a fan, please do not abuse your role or admin powers. Doing so will result in instant loss of mod and a potential kick/ban from the server. This also applies to abusing channels and bot commands.\n\n**Note: This server is also in accordance with the Discord Terms of Service and enforces them thoroughly. Anyone caught in violation of the Discord ToS can and will be removed from the server accordingly.**\n\nDiscord Terms of Service: https://discordapp.com/terms\n\nIf you happen to run into any issues while in this server, whether it be a glitch or a server member, please get in contact with a server admin. Thank you!\n\nPermanent Server Invite: https://discord.gg/swnW5GY")
+  await ctx.send(embed=embed)
+
+@client.command()
+async def xeno(ctx):
+  await ctx.send("Officially left competitive Lego Battlefield scene due to how most of people are resentful towards me. Pessimism and hopelessness are the only things I have been involved the last couple months.\nthanks to the people who supported me, a lot.\nEnough, moving to GFX! 🙂")
+  embed=discord.Embed()
+  embed.set_image(url="https://i.imgur.com/z0bdHZm.png")
+  await ctx.send(embed=embed)
+  embed=discord.Embed()
+  embed.set_image(url="https://i.imgur.com/CGG8tDx.png")
+  await ctx.send(embed=embed)
+
+@client.command()
+async def sus(ctx,member : discord.Member):
+  await ctx.send(f"{member.mention} is {random.randint(1,100)}% sus")
+  
+@client.command()
+async def s(ctx):
+  embed=discord.Embed()
+  embed.add_field(name="hi", value="fuck off пидар 병신")
+  await ctx.send(embed=embed)
+
+@client.command()
+async def avatar(ctx, *, member: discord.Member=None): # set the member object to None
+    if not member: # if member is no mentioned
+        member = ctx.message.author # set member as the author
+    userAvatar = member.avatar_url
+    await ctx.send(userAvatar)
+
+@client.command(aliases=["anonDM"])
+async def send_anonymous_dm(ctx, member: discord.Member, *, content):
+    channel = await member.create_dm() # creates a DM channel for mentioned user
+    await channel.send(content) # send whatever in the content to the mentioned user.
+    await ctx.send("Message sent.")
+# Usage: !send_anonymous_dm @mention_user <your message here>
+
+@client.command(name='server')
+async def fetchServerInfo(context):
+	guild = context.guild
+	
+	await context.send(f'Server Name: {guild.name}\nServer Size: {guild.member_count}')
+
+@client.command()
+async def sendDM(ctx, member: discord.Member, *, content):
+    channel = await member.create_dm() # creates a DM channel for mentioned user
+    await channel.send(f"**{ctx.message.author} said:** {content}")
+    await ctx.send("Message sent.")
+    
+@client.command()
+async def unimech(ctx):
+  await ctx.send("It's sad to see the best aim in PF go, but all good things come to an end right? I guess this is my end, I havne't even hit my prime and my career was over so quick. So sad how much of apussy the mods are. They have the power to ban others, so they ban me because of one fishy fucking clip. I hope every stylis member gets harassed and mocked for being such shit. If I do ever play again, it wont be PF. Unless these shit mods unban me. Which won't happen because I refuse to appeal")
+
+@client.command()
+async def women(ctx, member: discord.Member):
+  channel = await member.create_dm()
+  await channel.send("https://i.imgur.com/xPm6jWs.mp4")
+  await ctx.send("woman moment xd")
+
+@client.command()
+async def minecraft(ctx, * role: discord.Role):
+  user = ctx.message.author
+  role = discord.utils.get(ctx.guild.roles, name="minecraft")
+  await user.add_roles(role)
+  await ctx.send("you're now minecrafting")
+  
+@client.command()
+async def trouble (ctx):
+  embed=discord.Embed()
+  embed.set_image(url="https://i.imgur.com/gzL8lZY.png")
+  await ctx.send(embed=embed)
+
+@client.command()
+async def lesbian(ctx,member : discord.Member):
+  await ctx.send(f"{member.mention} is {random.randint(1,100)}% lesbian.")
 keep_alive()
 client.run("token")
