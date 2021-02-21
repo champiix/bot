@@ -87,13 +87,13 @@ async def unmute(ctx, member: discord.Member):
 async def pravda(ctx):
     await ctx.send("Workers of the world unite!")
 
-@client.command()
+@client.command(aliases=["zach", "zachary"])
 async def culprits(ctx):
   embed=discord.Embed(colour=0x1BFF00)
-  embed.set_image(url="https://i.imgur.com/5qAZzdj.png")
+  embed.set_image(url="https://res.cloudinary.com/du3fxrdqu/image/upload/v1613906508/peach%20bot/5qAZzdj_vfmswb.png")
   await ctx.send("AKM > AK103", embed=embed)
   embed=discord.Embed(colour=0x1BFF00)
-  embed.set_image(url="https://i.imgur.com/shEOdYn.png")
+  embed.set_image(url="https://res.cloudinary.com/du3fxrdqu/image/upload/v1613906266/peach%20bot/shEOdYn_gwunqp.png")
   await ctx.send(embed=embed)
 
 @client.command(pass_context=True, aliases=["propaganda"])
@@ -123,11 +123,6 @@ async def info(ctx):
 
     await ctx.send(embed=embed)
 
-@client.command()
-async def logo(ctx):
-    embed = discord.Embed(colour=discord.Colour.red())
-    embed.set_image(url="https://i.imgur.com/FhaJzaH.gif")
-    await ctx.send(embed=embed)
 
 @client.command()
 async def eesti(ctx):
@@ -191,16 +186,16 @@ async def slap(ctx, member : discord.Member):
 async def simprate(ctx,member : discord.Member):
   await ctx.send(f"{member.mention} is {random.randint(1,100)}% a simp.")
 
-@client.command(aliases=["neku", "miku"])
-async def nekumi(ctx):
+@client.command(aliases=["miku"])
+async def suzuka(ctx):
   embed=discord.Embed(color=0xff1d8e)
-  embed.set_image(url="https://i.imgur.com/aYJ8x3E.png")
+  embed.set_image(url="https://res.cloudinary.com/du3fxrdqu/image/upload/v1613906632/peach%20bot/aYJ8x3E_oa8fvb.png")
   await ctx.send(embed=embed)
 
 @client.command()
 async def braindamage(ctx):
   embed=discord.Embed(color=0xf4c2c2)
-  embed.set_image(url="https://i.imgur.com/9RGxJ2c.png")
+  embed.set_image(url="https://res.cloudinary.com/du3fxrdqu/image/upload/v1613906657/peach%20bot/9RGxJ2c_yjjjlx.png")
   await ctx.send(embed=embed)
 
 @client.command()
@@ -214,25 +209,25 @@ async def hackerman(ctx):
 @client.command()
 async def alike(ctx):
   embed=discord.Embed(color=0x800080)
-  embed.set_image(url="https://i.imgur.com/ILczO3H.png")
+  embed.set_image(url="https://res.cloudinary.com/du3fxrdqu/image/upload/v1613906693/peach%20bot/ILczO3H_mvlyg4.png")
   await ctx.send(embed=embed)
   embed=discord.Embed(color=0x800080)
-  embed.set_image(url="https://i.imgur.com/CnvQbWF.jpg")
+  embed.set_image(url="https://res.cloudinary.com/du3fxrdqu/image/upload/v1613906712/peach%20bot/CnvQbWF_ofyjwz.jpg")
   await ctx.send(embed=embed)
   embed=discord.Embed(color=0x800080)
   embed.set_image(url="https://cdn.discordapp.com/attachments/617112983901962260/716897276617949334/unknown.png")
   await ctx.send(embed=embed)
   embed=discord.Embed(color=0x800080)
-  embed.set_image(url="https://i.imgur.com/9YNxywz.png")
+  embed.set_image(url="https://res.cloudinary.com/du3fxrdqu/image/upload/v1613906739/peach%20bot/9YNxywz_cm8k03.png")
   await ctx.send(embed=embed)
 
 @client.command()
 async def mochi(ctx):
   embed=discord.Embed(color=0xf4c2c2)
-  embed.set_image(url="https://i.imgur.com/ze6Wn0w.jpg")
+  embed.set_image(url="https://res.cloudinary.com/du3fxrdqu/image/upload/v1613906851/peach%20bot/ze6Wn0w_ligvre.jpg")
   await ctx.send(embed=embed)
   embed=discord.Embed(color=0xf4c2c2)
-  embed.set_image(url="https://i.imgur.com/mEESSOZ.png")
+  embed.set_image(url="https://res.cloudinary.com/du3fxrdqu/image/upload/v1613906874/peach%20bot/mEESSOZ_zznx5a.png")
   await ctx.send(embed=embed)
 
 @client.command(aliases=["gay"])
@@ -251,12 +246,9 @@ async def lolirate(ctx,member : discord.Member):
 
 @client.command(aliases=["chii"])
 async def champii(ctx):
-  embed=discord.Embed(color=0xf4c2c2)
-  embed.set_image(url="https://i.imgur.com/rZapsKT.jpg")
-  await ctx.send(embed=embed)
-  embed=discord.Embed(color=0xf4c2c2)
-  embed.set_image(url="https://i.imgur.com/IyFiOMK.jpg")
-  await ctx.send(embed=embed)
+ embed=discord.Embed()
+ embed.set_image(url="https://res.cloudinary.com/du3fxrdqu/image/upload/v1613906967/peach%20bot/afpUzr5_kz3eon.jpg")
+ await ctx.send(embed=embed)
 
 @client.command()
 async def kill(ctx, member : discord.Member):
@@ -333,8 +325,8 @@ async def hug(ctx, member : discord.Member):
 
 @client.command()
 async def help(ctx):
- embed=discord.Embed(title="Bot's code: https://github.com/champiix/bot", description="IMPORTANT\n``petition``\nFun\n``8ball``, ``coinflip|cf``, ``copypasta``, ``dice|roll``, ``horny|hornyrate``, ``gay|gayrate``, ``hug``, ``hackerman``, ``kill``,  ``kiss``,  ``lolirate``,  ``simp|simprate``,  ``slap``,``pat``, ``pedo|pedorate``,``sus``,``avatar``,``server``\nModeration\n ``ban``,  ``mute``,  ``clear``,  ``kick``,  ``unmute``\nCustom Commands\n``alike``,  ``braindamage``,  ``champii``,  ``culprits``,  ``eesti``,  ``ice``,  ``logo``,  ``manifesto``,  ``mochi``,  ``nekumi|miku``,  ``pravda``,  ``t``, ``snowy``,``zen``,``reece``,``xeno``,``unimech``\nVPN \n``pia``,  ``nordvpn``,  ``tunnelbear``\nBot Stuff\n``repo``,  ``ping``,  ``info``,  ``help (shows this message)``", color=0xF2AD7E)
- embed.set_author(name="Command list",icon_url="https://cdn.discordapp.com/avatars/692360784268754964/e82b5189c1c9c5f57be95482db6ba1fb.png?size=512")
+ embed=discord.Embed(title="Bot's code: https://github.com/champiix/bot", description="IMPORTANT\n``petition``\nFun\n``8ball``, ``coinflip|cf``, ``copypasta``, ``dice|roll``, ``horny|hornyrate``, ``gay|gayrate``, ``hug``, ``hackerman``, ``kill``,  ``kiss``,  ``lolirate``,  ``simp|simprate``,  ``slap``,``pat``, ``pedo|pedorate``,``sus``,``avatar``,``server``, ``liability``, ``lesbian``, ``filipino``\nModeration\n ``ban``,  ``mute``,  ``clear``,  ``kick``,  ``unmute``\nCustom Commands\n``alike``,  ``braindamage``,  ``champii``,  ``culprits``,  ``eesti``,  ``ice``, ``manifesto``,  ``mochi``,  ``miku``,  ``pravda``,  ``t``, ``snowy``,``zen``,``reece``,``xeno``,``unimech``\nVPN \n``pia``,  ``nordvpn``,  ``tunnelbear``\nBot Stuff\n``repo``,  ``ping``,  ``info``,  ``help (shows this message)``", color=0xF2AD7E)
+ embed.set_author(name="Command list",icon_url="https://cdn.discordapp.com/avatars/692360784268754964/b82e34765cbeb04b2566e297b93197b0.png?size=2048")
  await ctx.send(embed=embed)
 
 @client.command()
@@ -372,25 +364,24 @@ async def snowy(ctx):
 @client.command()
 async def zen(ctx):
   embed=discord.Embed()
-  embed.set_image(url="https://i.imgur.com/jzjlhz4.png")
+  embed.set_image(url="https://res.cloudinary.com/du3fxrdqu/image/upload/v1613907441/peach%20bot/jzjlhz4_m3xbcz.png")
   await ctx.send(embed=embed)
   embed=discord.Embed()
-  embed.set_image(url="https://i.imgur.com/RUOWQcY.png")
+  embed.set_image(url="https://res.cloudinary.com/du3fxrdqu/image/upload/v1613907492/peach%20bot/RUOWQcY_dyzyp7.png")
   await ctx.send(embed=embed)
   embed=discord.Embed()
-  embed.set_image(url="https://i.imgur.com/Jefvl1j.png")
+  embed.set_image(url="https://res.cloudinary.com/du3fxrdqu/image/upload/v1613907559/peach%20bot/Jefvl1j_kzbm1p.png")
   await ctx.send(embed=embed)
   embed=discord.Embed()
-  embed.set_image(url="https://i.imgur.com/pLZxxtY.png")
+  embed.set_image(url="https://res.cloudinary.com/du3fxrdqu/image/upload/v1613907617/peach%20bot/p1OeCRY_gwdthf.png")
   await ctx.send(embed=embed)
-  embed=discord.Embed()
-  embed.set_image(url="https://i.imgur.com/p1OeCRY.png")
+  embed.set_image(url="https://res.cloudinary.com/du3fxrdqu/image/upload/v1613907659/peach%20bot/afZsnyH_jolvxn.png")
   await ctx.send(embed=embed)
 
 @client.command()
 async def reece(ctx):
   embed=discord.Embed()
-  embed.set_image(url="https://i.imgur.com/aJ2sccg.png")
+  embed.set_image(url="https://res.cloudinary.com/du3fxrdqu/image/upload/v1613907121/peach%20bot/aJ2sccg_erd13r.png")
   await ctx.send(embed=embed)
   
 @client.command()
@@ -411,10 +402,10 @@ async def prules(ctx):
 async def xeno(ctx):
   await ctx.send("Officially left competitive Lego Battlefield scene due to how most of people are resentful towards me. Pessimism and hopelessness are the only things I have been involved the last couple months.\nthanks to the people who supported me, a lot.\nEnough, moving to GFX! 🙂")
   embed=discord.Embed()
-  embed.set_image(url="https://i.imgur.com/z0bdHZm.png")
+  embed.set_image(url="https://res.cloudinary.com/du3fxrdqu/image/upload/v1613907321/peach%20bot/z0bdHZm_y3afly.png")
   await ctx.send(embed=embed)
   embed=discord.Embed()
-  embed.set_image(url="https://i.imgur.com/CGG8tDx.png")
+  embed.set_image(url="https://res.cloudinary.com/du3fxrdqu/image/upload/v1613907350/peach%20bot/CGG8tDx_pnxrnc.png")
   await ctx.send(embed=embed)
 
 @client.command()
@@ -460,7 +451,7 @@ async def unimech(ctx):
 @client.command()
 async def women(ctx, member: discord.Member):
   channel = await member.create_dm()
-  await channel.send("https://i.imgur.com/xPm6jWs.mp4")
+  await channel.send("https://media1.tenor.com/images/17274440b818d32e273ab5aadb88a954/tenor.gif?itemid=18526153")
   await ctx.send("woman moment xd")
 
 @client.command()
@@ -473,11 +464,19 @@ async def minecraft(ctx, * role: discord.Role):
 @client.command()
 async def trouble (ctx):
   embed=discord.Embed()
-  embed.set_image(url="https://i.imgur.com/gzL8lZY.png")
+  embed.set_image(url="https://res.cloudinary.com/du3fxrdqu/image/upload/v1613907283/peach%20bot/gzL8lZY_xm3zry.png")
   await ctx.send(embed=embed)
 
 @client.command()
 async def lesbian(ctx,member : discord.Member):
   await ctx.send(f"{member.mention} is {random.randint(1,100)}% lesbian.")
+
+@client.command()
+async def liability(ctx,member : discord.Member):
+  await ctx.send(f"{member.mention} is {random.randint(1,100)}% liable")
+
+@client.command()
+async def filipino(ctx,member : discord.Member):
+  await ctx.send(f"{member.mention} is {random.randint(1,100)}% filipino")
 keep_alive()
 client.run("token")
