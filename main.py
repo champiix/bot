@@ -5,8 +5,9 @@ import asyncio
 from webserver import keep_alive
 import os
 
-client = commands.Bot(command_prefix = ".")
+client = commands.Bot(command_prefix = ".", guild_subscription = True)
 client.remove_command('help')
+format = "%a, %d %b %Y | %H:%M:%S %ZGMT"
 
 @client.event
 async def on_ready():
@@ -95,6 +96,9 @@ async def culprits(ctx):
   embed=discord.Embed(colour=0x1BFF00)
   embed.set_image(url="https://res.cloudinary.com/du3fxrdqu/image/upload/v1613906266/peach%20bot/shEOdYn_gwunqp.png")
   await ctx.send(embed=embed)
+  embed=discord.Embed(colour=0x1BFF00)
+  embed.set_image(url="https://res.cloudinary.com/du3fxrdqu/image/upload/v1614046027/peach%20bot/unknown-2_e3audi.png")
+  await ctx.send(embed=embed)
 
 @client.command(pass_context=True, aliases=["propaganda"])
 async def manifesto(ctx):
@@ -110,10 +114,10 @@ async def manifesto(ctx):
 
 @client.command()
 async def info(ctx):
-    embed = discord.Embed(title="peach", description="communist bot with a kpop pfp", color=0xf4c2c2)
+    embed = discord.Embed(title="peach", description="AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", color=0xf4c2c2)
 
     # give info about you here
-    embed.add_field(name="Author", value="champii~")
+    embed.add_field(name="Author", value="champii")
 
     # Shows the number of servers the bot is member of.
     embed.add_field(name="Server count", value=f"{len(client.guilds)}")
@@ -407,6 +411,9 @@ async def xeno(ctx):
   embed=discord.Embed()
   embed.set_image(url="https://res.cloudinary.com/du3fxrdqu/image/upload/v1613907350/peach%20bot/CGG8tDx_pnxrnc.png")
   await ctx.send(embed=embed)
+  embed=discord.Embed()
+  embed.set_image(url="https://res.cloudinary.com/du3fxrdqu/image/upload/v1616289356/peach%20bot/1616289267745_eord1c.png")
+  await ctx.send(embed=embed)
 
 @client.command()
 async def sus(ctx,member : discord.Member):
@@ -432,11 +439,16 @@ async def send_anonymous_dm(ctx, member: discord.Member, *, content):
     await ctx.send("Message sent.")
 # Usage: !send_anonymous_dm @mention_user <your message here>
 
+#EDITORS NOTE THIS CODE BLOCK DOESN'T NEED CTX YOU DAFT CUNT
 @client.command(name='server')
 async def fetchServerInfo(context):
-	guild = context.guild
-	
-	await context.send(f'Server Name: {guild.name}\nServer Size: {guild.member_count}')
+  guild = context.guild
+  text_channels = len(guild.text_channels)
+  voice_channels = len(guild.voice_channels)
+  embed = discord.Embed(color=0xFFCCA6)
+  embed.add_field(name=f"{guild.name}", value=f"Server Size: {guild.member_count}\nServer location: {guild.region}\nServer creation date: {guild.created_at.strftime(format)}\nText channels: {text_channels}\nVoice channels: {voice_channels}")
+  embed.set_thumbnail(url = str(guild.icon_url))
+  await context.send(embed=embed)
 
 @client.command()
 async def sendDM(ctx, member: discord.Member, *, content):
@@ -478,5 +490,44 @@ async def liability(ctx,member : discord.Member):
 @client.command()
 async def filipino(ctx,member : discord.Member):
   await ctx.send(f"{member.mention} is {random.randint(1,100)}% filipino")
+  
+@client.command()
+@commands.has_permissions(kick_members=True)
+async def timeout(ctx, member: discord.Member):
+    role = discord.utils.get(ctx.guild.roles, name='Muted')
+    await member.add_roles(role)
+    await ctx.send(f"{member.mention} got put into timeout.")
+
+@client.command()
+async def downbad(ctx,member : discord.Member):
+  await ctx.send(f"{member.mention} is {random.randint(1,100)}% down bad.")
+
+@client.command()
+async def violence(ctx, member: discord.Member):
+  embed=discord.Embed(color=0xf4c2c2)
+  embed.set_image(url="https://media1.tenor.com/images/92d6db8936ad0924d7f127c54491a737/tenor.gif?itemid=19273167")
+  await ctx.send(f"{member.mention} got violenced by "+ctx.message.author.mention, embed=embed)
+
+@client.command(aliases=["whois"])
+async def user(ctx, member: discord.Member = None):
+    if not member:  # if member is no mentioned
+        member = ctx.message.author  # set member as the author
+    roles = [role.mention for role in member.roles[1:]]
+    roles.append('@everyone')
+    embed = discord.Embed(colour=discord.Colour.blurple(), timestamp=ctx.message.created_at,
+                          title=f"User Info - {member}")
+    embed.set_thumbnail(url=member.avatar_url)
+    embed.set_footer(text=f"Requested by {ctx.author}")
+
+    embed.add_field(name="ID:", value=member.id)
+    embed.add_field(name="Display Name:", value=member.display_name)
+
+    embed.add_field(name="Created Account On:", value=member.created_at.strftime("%a, %#d %B %Y, %I:%M %p UTC"))
+    embed.add_field(name="Joined Server On:", value=member.joined_at.strftime("%a, %#d %B %Y, %I:%M %p UTC"))
+
+    embed.add_field(name="Roles:", value="".join([role.mention for role in member.roles[1:]]))
+    embed.add_field(name="Highest Role:", value=member.top_role.mention)
+    await ctx.send(embed=embed)
+
 keep_alive()
-client.run("token")
+client.run("TOKEN")
