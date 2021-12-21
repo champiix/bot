@@ -13,7 +13,7 @@ blacklist = ["410964165629575178", "241232014597029888"]
 
 @client.event
 async def on_ready():
-    await client.change_presence(activity=discord.Streaming(name="ayaya", url="https://www.twitch.tv/champii"))
+    await client.change_presence(activity=discord.Streaming(name=" with more", url="https://www.twitch.tv/champii"))
     print("bot is ready")
 
 @client.event
@@ -26,8 +26,9 @@ async def on_member_remove(member):
 
 @client.event
 async def on_command_error(ctx,error):
-  if isinstance(error, commands.CommandNotFound):
-    await ctx.send("That command doesn't exist!")
+  #if isinstance(error, commands.CommandNotFound):
+    #responses=["That command doesn't exist!", "That command doesn't exist!", "you telling me to shut up wont work (command not found lol)", "Sorry, I couldn't find this command!"]
+    #await ctx.send(f"{random.choice(responses)}")
   if isinstance(error, commands.MissingRequiredArgument):
     await ctx.send("You forgot to mention a user!")
 
@@ -494,9 +495,28 @@ async def punch(ctx, member: discord.Member):
 
 @client.command()
 async def help(ctx):
- embed=discord.Embed(title="Bot's code: https://github.com/champiix/bot", description="Fun:\n``8ball`` ``dice`` ``coinflip`` ``cough`` ``heal`` ``slap`` ``simp`` ``gay`` ``loli`` ``kill`` ``copypasta`` ``horny`` ``kiss`` ``hug`` ``pat`` ``pedo`` ``sus`` ``women`` ``lesbian`` ``liability`` ``filipino`` ``downbad`` ``violence``\nCustom commands:\n``zach`` ``eesti`` ``suzuka`` ``braindamage`` ``hackerman`` ``alike`` ``mochi`` ``overwatch`` ``champii`` ``scam`` ``snowy`` ``zen`` ``xeno`` ``unimech`` ``ky`` ``punch``\nModeration:\n``clear`` ``kick`` ``ban`` ``mute`` ``unmute``\nInfo/Utility:\n``ping`` ``info`` ``repo`` ``avatar`` ``server`` ``user`` ``poll``", color=0xF2AD7E)
+ embed=discord.Embed(title="Bot's code: https://github.com/champiix/bot", description="Fun:\n``8ball`` ``dice`` ``coinflip`` ``cough`` ``heal`` ``slap`` ``simp`` ``gay`` ``loli`` ``kill`` ``copypasta`` ``horny`` ``kiss`` ``punch`` ``hug`` ``pat`` ``pedo`` ``sus`` ``women`` ``lesbian`` ``liability`` ``filipino`` ``downbad`` ``violence``\nCustom commands:\n``zach`` ``eesti`` ``suzuka`` ``braindamage`` ``hackerman`` ``alike`` ``mochi`` ``overwatch`` ``champii`` ``scam`` ``snowy`` ``zen`` ``xeno`` ``unimech`` ``ky`` ``insi`` ``devoe``\nModeration:\n``clear`` ``kick`` ``ban`` ``mute`` ``unmute``\nInfo/Utility:\n``ping`` ``info`` ``repo`` ``avatar`` ``server`` ``user`` ``poll``", color=0xF2AD7E)
  embed.set_author(name="Command list",icon_url="https://cdn.discordapp.com/avatars/692360784268754964/8a1a3eb11ceb60d269f3562e3c57ecb2.webp?size=2048")
  await ctx.send(embed=embed)
+ 
+@client.command()
+async def insi(ctx):
+  embed=discord.Embed()
+  embed.set_image(url="https://res.cloudinary.com/du3fxrdqu/image/upload/v1628633024/peach%20bot/Screenshot_20210811-010216_Discord-Canary_ilaush.png")
+  await ctx.send(embed=embed)
+
+@client.command()
+async def genshin(ctx, * role: discord.Role):
+  user = ctx.message.author
+  role = discord.utils.get(ctx.guild.roles, name="genshin access")
+  await user.add_roles(role)
+  await ctx.send("you're now genshining")
+
+@client.command()
+async def devoe(ctx):
+  embed=discord.Embed()
+  embed.set_image(url="https://res.cloudinary.com/du3fxrdqu/image/upload/v1639519005/peach%20bot/unknown_reqrdk.png")
+  await ctx.send(embed=embed)
 
 keep_alive()
 client.run("TOKEN")
